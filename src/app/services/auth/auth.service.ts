@@ -51,4 +51,16 @@ export class AuthService {
     })
   }
 
+  logout(){
+    this.storage.remove('token')
+    this.jwt.setToken('')
+    this._principal$.next({
+      username: '',
+      email: '',
+      roles: [],
+      authenticated: false
+    })
+    this.router.navigateByUrl('/login').then(r => r)
+  }
+
 }

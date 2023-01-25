@@ -75,7 +75,7 @@
         <h3 class="w-10 h-10 text-xl text-white bg-blue-600 font-bold rounded-full flex items-center justify-center">
           <span>{{ user.email.split('')[0] | uppercase }}</span>
         </h3>
-        <button
+        <button (click)="onLogout()"
           class="block rounded-md bg-blue-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-blue-700"
           routerLink="/login"
         >
