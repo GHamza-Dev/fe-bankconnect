@@ -11,6 +11,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import {HttpClientModule} from "@angular/common/http";
 import { AuthDirective } from './directives/auth.directive';
+import { RegisterComponent } from './pages/register/register.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AuthDirective } from './directives/auth.directive';
     NavComponent,
     FooterComponent,
     DashboardComponent,
-    AuthDirective
+    AuthDirective,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
