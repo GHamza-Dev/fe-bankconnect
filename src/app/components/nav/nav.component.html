@@ -2,7 +2,7 @@
   <div
     class="mx-auto flex h-16 max-w-full items-center gap-8"
   >
-    <a class="block text-teal-600" href="/">
+    <a routerLink="/login" class="block text-blue-600">
       <span class="sr-only">Home</span>
       <svg
         class="h-8"
@@ -21,55 +21,30 @@
       <nav aria-label="Site Nav" class="hidden md:block">
         <ul class="flex items-center gap-6 text-sm">
           <li>
-            <a class="text-gray-500 transition hover:text-gray-500/75" href="/">
-              About
+            <a routerLink="/" class="text-gray-500 transition hover:text-gray-500/75">
+              Home
             </a>
           </li>
-
           <li>
-            <a class="text-gray-500 transition hover:text-gray-500/75" href="/">
-              Careers
-            </a>
-          </li>
-
-          <li>
-            <a class="text-gray-500 transition hover:text-gray-500/75" href="/">
-              History
-            </a>
-          </li>
-
-          <li>
-            <a class="text-gray-500 transition hover:text-gray-500/75" href="/">
-              Services
-            </a>
-          </li>
-
-          <li>
-            <a class="text-gray-500 transition hover:text-gray-500/75" href="/">
-              Projects
-            </a>
-          </li>
-
-          <li>
-            <a class="text-gray-500 transition hover:text-gray-500/75" href="/">
-              Blog
+            <a routerLink="/" class="text-gray-500 transition hover:text-gray-500/75">
+              Payments
             </a>
           </li>
         </ul>
       </nav>
 
-      <div class="flex items-center gap-4">
+      <div *ngIf="!loggedIn" class="flex items-center gap-4">
         <div class="sm:flex sm:gap-4">
           <a
-            class="block rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700"
-            href="/"
+            class="block rounded-md bg-blue-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-blue-700"
+            routerLink="/login"
           >
             Login
           </a>
 
           <a
-            class="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600 transition hover:text-teal-600/75 sm:block"
-            href="/"
+            class="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-blue-600 transition hover:text-blue-600/75 sm:block"
+            routerLink="/"
           >
             Register
           </a>
@@ -93,6 +68,18 @@
               d="M4 6h16M4 12h16M4 18h16"
             />
           </svg>
+        </button>
+      </div>
+
+      <div *appAuth="'*'" class="flex items-center gap-4">
+        <h3 class="w-10 h-10 text-xl text-white bg-blue-600 font-bold rounded-full flex items-center justify-center">
+          <span>{{ user.email.split('')[0] | uppercase }}</span>
+        </h3>
+        <button
+          class="block rounded-md bg-blue-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-blue-700"
+          routerLink="/login"
+        >
+          Logout
         </button>
       </div>
     </div>
