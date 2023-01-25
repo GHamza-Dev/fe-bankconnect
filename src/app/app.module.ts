@@ -12,6 +12,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import {HttpClientModule} from "@angular/common/http";
 import { AuthDirective } from './directives/auth.directive';
 import { RegisterComponent } from './pages/register/register.component';
+import { AgentLoginComponent } from './pages/agent/agent-login/agent-login.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { RegisterComponent } from './pages/register/register.component';
     FooterComponent,
     DashboardComponent,
     AuthDirective,
-    RegisterComponent
+    RegisterComponent,
+    AgentLoginComponent
   ],
   imports: [
     BrowserModule,

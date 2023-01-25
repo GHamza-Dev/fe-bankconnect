@@ -36,8 +36,8 @@ export class AuthService {
     return this.http.post<AuthResponse>(`${url}/auth/${role}`,{email, password},{headers});
   }
 
-  login(email: string, password: string){
-    this.authenticate(email, password).subscribe({
+  login(email: string, password: string, role = 'user'){
+    this.authenticate(email, password, role).subscribe({
       next:(value)=>{
         this.storage.set('token',value.token)
         this.jwt.setToken(value.token)
