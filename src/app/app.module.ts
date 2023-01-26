@@ -9,10 +9,14 @@ import { MainComponent } from './layout/main/main.component';
 import { NavComponent } from './components/nav/nav.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { AuthDirective } from './directives/auth.directive';
 import { RegisterComponent } from './pages/register/register.component';
 import { AgentLoginComponent } from './pages/agent/agent-login/agent-login.component';
+import { ClientsComponent } from './pages/clients/clients.component';
+import { AgentNavComponent } from './components/nav/agent-nav/agent-nav.component';
+import {AppInterceptor} from "./interceptors/app.interceptor";
+import { StatusComponent } from './components/status/status.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,10 @@ import { AgentLoginComponent } from './pages/agent/agent-login/agent-login.compo
     DashboardComponent,
     AuthDirective,
     RegisterComponent,
-    AgentLoginComponent
+    AgentLoginComponent,
+    ClientsComponent,
+    AgentNavComponent,
+    StatusComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +39,9 @@ import { AgentLoginComponent } from './pages/agent/agent-login/agent-login.compo
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -13,6 +13,10 @@ export interface User {
 
   password: string,
 
+  status: string,
+
+  isActive: string
+
   accountType: string
 
 }

@@ -18,7 +18,7 @@ export class AuthService {
   private _principal$ = new BehaviorSubject<Principal>({
       username: '',
       email: '',
-      roles: [],
+      role: '',
       authenticated: false
     })
   principal$ = this._principal$.asObservable();
@@ -57,7 +57,7 @@ export class AuthService {
     this._principal$.next({
       username: '',
       email: '',
-      roles: [],
+      role: '',
       authenticated: false
     })
     this.router.navigateByUrl('/login').then(r => r)

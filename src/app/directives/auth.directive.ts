@@ -15,7 +15,7 @@ export class AuthDirective {
           return;
         }
 
-        if (role !== '*' && !(<Principal>value).roles.includes(`ROLE_${role}`)){
+        if (role !== '*' && !((<Principal>value).role === `ROLE_${role}`)){
           this.viewContainerRef.clear();
           return;
         }

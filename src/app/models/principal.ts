@@ -3,7 +3,7 @@ export interface Principal{
 
   email: string,
 
-  roles: string[],
+  role?: string,
 
   authenticated: boolean
 }

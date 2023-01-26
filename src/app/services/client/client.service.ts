@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {User} from "../../models/user";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {env} from "../../../../config/env";
+import {AppResponse} from "../../models/app-response";
 
 const url = env.url;
 @Injectable({
@@ -28,5 +29,9 @@ export class ClientService {
         password: client.password
       },
       {headers});
+  }
+
+  getClients(email = "*",status = "*"){
+    return this.http.get<AppResponse>(`${url}/client/all`);
   }
 }
