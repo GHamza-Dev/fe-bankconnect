@@ -17,6 +17,7 @@ import { ClientsComponent } from './pages/clients/clients.component';
 import { AgentNavComponent } from './components/nav/agent-nav/agent-nav.component';
 import {AppInterceptor} from "./interceptors/app.interceptor";
 import { StatusComponent } from './components/status/status.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { StatusComponent } from './components/status/status.component';
     AgentLoginComponent,
     ClientsComponent,
     AgentNavComponent,
-    StatusComponent
+    StatusComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,

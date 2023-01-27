@@ -34,4 +34,15 @@ export class ClientService {
   getClients(email = "*",status = "*"){
     return this.http.get<AppResponse>(`${url}/client/all`);
   }
+
+  acceptClient(clientId: number){
+    const headers = new HttpHeaders({
+      'Content-Type':'application/json'
+    });
+    return this.http.post<AppResponse>(`${url}/client/accept`,{clientId: clientId},{headers})
+  }
+
+  rejectClient(){
+
+  }
 }

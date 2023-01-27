@@ -2,33 +2,18 @@
   <table class="min-w-full divide-y divide-gray-200 text-sm">
     <thead class="bg-gray-100">
     <tr>
-      <th class="sticky inset-y-0 left-0 bg-gray-100 px-4 py-2 text-left">
-        <label class="sr-only" for="SelectAll">Select All</label>
-
-        <input
-          class="h-5 w-5 rounded border-gray-200"
-          type="checkbox"
-          id="SelectAll"
-        />
-      </th>
       <th
         class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900"
       >
         <div class="flex items-center gap-2">
           ID
-
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-4 w-4 text-gray-700"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-              clip-rule="evenodd"
-            />
-          </svg>
+        </div>
+      </th>
+      <th
+        class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900"
+      >
+        <div class="flex items-center gap-2">
+          CIN
         </div>
       </th>
       <th
@@ -36,19 +21,6 @@
       >
         <div class="flex items-center gap-2">
           Name
-
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-4 w-4 text-gray-700"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-              clip-rule="evenodd"
-            />
-          </svg>
         </div>
       </th>
       <th
@@ -56,60 +28,30 @@
       >
         <div class="flex items-center gap-2">
           Email
-
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-4 w-4 text-gray-700"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-              clip-rule="evenodd"
-            />
-          </svg>
         </div>
       </th>
       <th
         class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900"
       >
         <div class="flex items-center gap-2">
-          Amount
-
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-4 w-4 text-gray-700"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-              clip-rule="evenodd"
-            />
-          </svg>
+          Status
         </div>
       </th>
       <th
-        class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900"
+        class="whitespace-nowrap px-4 py-2 text-center font-medium text-gray-900"
       >
-        Status
+        Action
       </th>
     </tr>
     </thead>
 
     <tbody class="divide-y divide-gray-200">
     <tr *ngFor="let client of clients">
-      <td class="sticky inset-y-0 left-0 bg-white px-4 py-2">
-        <input
-          class="h-5 w-5 rounded border-gray-200"
-          type="checkbox"
-          id="Row1"
-        />
-      </td>
       <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
         #{{("00000"+client.id).slice(-6)}}
+      </td>
+      <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+        {{client.cin}}
       </td>
       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
         {{client.lastName+" "+client.lastName}}
@@ -117,11 +59,15 @@
       <td class="whitespace-nowrap px-4 py-2 text-gray-700">
         {{client.email}}
       </td>
-      <td class="whitespace-nowrap px-4 py-2 text-gray-700">----</td>
       <td class="whitespace-nowrap px-4 py-2">
         <app-status [status]="client.status"></app-status>
+      </td>
+      <td class="flex justify-evenly px-4 py-2">
+        <button (click)="setSelectedId(client.id, 'accept');reviewModalOpened = true" class="text-blue-600">Accept</button>
+        <button (click)="setSelectedId(client.id, 'reject');reviewModalOpened = true" class="text-red-600">Reject</button>
       </td>
     </tr>
     </tbody>
   </table>
 </div>
+<app-modal [opened]="reviewModalOpened" (onConfirm)="onAccept()"></app-modal>
